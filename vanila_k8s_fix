@@ -1,0 +1,10 @@
+#cgroup k8s и docker. change docker driver to systemd. create kubeadm config
+
+/etc/docker/daemon.json
+{
+   "exec-opts": ["native.cgroupdriver=systemd"]
+}
+
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
